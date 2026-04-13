@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lululemon Gift Card Reward</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Nunito',sans-serif;background:#0d0d0d;color:#fff;min-height:100vh;text-align:center}
+
+.hero{padding:40px 20px 20px;max-width:600px;margin:0 auto}
+
+.coin{width:80px;height:80px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;position:relative;flex-shrink:0}
+.coin-dollar{font-size:32px;font-weight:900;color:#111}
+.coin-star{position:absolute;top:4px;right:2px;font-size:16px}
+
+.hero h1{font-size:clamp(28px,7vw,44px);font-weight:900;color:#ff4fa3;line-height:1.15;margin:20px 0 10px}
+.hero-sub{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px}
+
+.gc-wrap{margin:0 auto 28px;max-width:320px}
+.gc{background:linear-gradient(135deg,#1a0d24 0%,#3d1a4f 100%);border-radius:16px;padding:24px 22px;text-align:left;position:relative;overflow:hidden;border:1px solid rgba(255,79,163,0.3);box-shadow:0 16px 60px rgba(255,79,163,0.15)}
+.gc::before{content:'';position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,79,163,0.08)}
+.gc::after{content:'';position:absolute;bottom:-30px;left:10px;width:100px;height:100px;border-radius:50%;background:rgba(255,79,163,0.05)}
+.gc-brand{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px}
+.gc-name{font-size:18px;font-weight:900;color:#fff;margin-bottom:20px}
+.gc-amount{font-size:52px;font-weight:900;color:#ff4fa3;line-height:1;position:relative;z-index:1}
+.gc-amount sup{font-size:20px;vertical-align:super;font-weight:700}
+.gc-sub{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-top:8px}
+.gc-chip{position:absolute;bottom:20px;right:20px;width:34px;height:26px;border-radius:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12)}
+
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:520px;margin:0 auto 36px;padding:18px 24px;background:linear-gradient(90deg,#ff4fa3,#ff79c0);border:none;border-radius:50px;cursor:pointer;text-decoration:none;transition:opacity 0.2s,transform 0.1s}
+.cta-btn:hover{opacity:0.9}
+.cta-btn:active{transform:scale(0.98)}
+.cta-icon{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0}
+.cta-text{text-align:left}
+.cta-text strong{display:block;font-size:16px;font-weight:800;color:#fff}
+.cta-text span{font-size:12px;color:rgba(255,255,255,0.8)}
+
+.steps-wrap{padding:0 20px;max-width:600px;margin:0 auto 44px}
+.steps-card{background:#151c2e;border-radius:20px;padding:28px 24px;text-align:left}
+.step-row{display:flex;align-items:flex-start;gap:18px;margin-bottom:26px}
+.step-row:last-of-type{margin-bottom:0}
+.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#ff4fa3,#ff79c0);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0}
+.step-body strong{display:block;font-size:15px;font-weight:800;color:#fff;margin-bottom:3px}
+.step-body span{font-size:13px;color:rgba(255,255,255,0.48);line-height:1.5}
+.steps-note{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);font-size:12px;color:rgba(255,255,255,0.3);text-align:center;line-height:1.6}
+
+.proof-section{padding:0 20px 44px;max-width:600px;margin:0 auto}
+.proof-section h2{font-size:clamp(22px,5vw,30px);font-weight:900;color:#ff4fa3;margin-bottom:8px;line-height:1.2}
+.proof-section .proof-sub{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:22px}
+
+.testimonials{display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
+.tcard{background:#151c2e;border-radius:14px;padding:18px 18px 16px;border:1px solid rgba(255,79,163,0.15);text-align:left}
+.tcard-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0}
+.tcard-meta strong{display:block;font-size:14px;font-weight:800;color:#fff}
+.tcard-meta span{font-size:12px;color:rgba(255,255,255,0.4)}
+.stars{color:#ffb800;font-size:13px;margin-bottom:6px;letter-spacing:1px}
+.tcard p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6}
+.tcard-badge{display:inline-block;margin-top:10px;background:rgba(255,79,163,0.15);color:#ff79c0;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid rgba(255,79,163,0.25)}
+
+.stats-row{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.65);flex-wrap:wrap}
+.stat-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);display:inline-block;flex-shrink:0}
+
+.page-disclaimer{padding:0 24px 48px;max-width:600px;margin:0 auto;font-size:12px;color:rgba(255,255,255,0.28);line-height:1.8}
+.page-disclaimer a{color:rgba(255,255,255,0.38)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="coin">
+    <span class="coin-dollar">$</span>
+    <span class="coin-star">⭐</span>
+  </div>
+
+  <h1>Claim Your Lululemon<br>Gift Card Now!</h1>
+  <p class="hero-sub">Higher value deals = faster rewards!</p>
+
+  <div class="gc-wrap">
+    <div class="gc">
+      <div class="gc-brand">lululemon athletica</div>
+      <div class="gc-name">Gift Card Reward</div>
+      <div class="gc-amount"><sup>$</sup>500</div>
+      <div class="gc-sub">Sweepstakes Prize</div>
+      <div class="gc-chip"></div>
+    </div>
+  </div>
+
+  <a href="#" class="cta-btn">
+    <div class="cta-icon">$</div>
+    <div class="cta-text">
+      <strong>$500 Lululemon Gift Card</strong>
+      <span>(Enter Email &amp; Complete Deals)</span>
+    </div>
+  </a>
+</div>
+
+<div class="steps-wrap">
+  <div class="steps-card">
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <strong>Click The Button Above 👆</strong>
+        <span>Start your gift card claim process</span>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <strong>Enter Your Email &amp; Basic Info</strong>
+        <span>We need this to send your gift card</span>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <strong>Complete Recommended Deals</strong>
+        <span>(Higher value deals = faster rewards!)</span>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <strong>Claim Your Gift Card! 🎉</strong>
+        <span>Your reward is waiting for you!</span>
+      </div>
+    </div>
+    <div class="steps-note">* Terms and conditions apply. Gift card values may vary based on completed offers.</div>
+  </div>
+</div>
+
+<div class="proof-section">
+  <h2>Shop Lululemon for Free 🛍️</h2>
+  <p class="proof-sub">Hot offer not to be missed — leggings, bras, jackets &amp; more.</p>
+
+  <div class="testimonials">
+    <div class="tcard">
+      <div class="tcard-top">
+        <div class="avatar" style="background:linear-gradient(135deg,#ff4fa3,#c026a0)">JM</div>
+        <div class="tcard-meta">
+          <strong>Jessica M.</strong>
+          <span>Austin, TX · 3 days ago</span>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p>"ngl i thought this was gonna be one of those scam things lol but i got the gift card like 6 days later. got myself the align leggings i've been eyeing for months. still kinda shocked"</p>
+      <div class="tcard-badge">✅ Verified Winner</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div class="avatar" style="background:linear-gradient(135deg,#a855f7,#7c3aed)">RL</div>
+        <div class="tcard-meta">
+          <strong>Rachel L.</strong>
+          <span>Chicago, IL · 1 week ago</span>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p>"ok so i entered this on a whim and forgot about it. then i got an email saying i won and i genuinely thought it was spam 😭 used the $500 on a jacket and some joggers. so worth it"</p>
+      <div class="tcard-badge">✅ Verified Winner</div>
+    </div>
+    <div class="tcard">
+      <div class="tcard-top">
+        <div class="avatar" style="background:linear-gradient(135deg,#f97316,#ea580c)">KT</div>
+        <div class="tcard-meta">
+          <strong>Kayla T.</strong>
+          <span>Miami, FL · 2 weeks ago</span>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <p>"my coworker sent me the link and i almost didn't bother. so glad i did omg. card showed up fast and i already went on a little spree 🛍️ tell your friends fr"</p>
+      <div class="tcard-badge">✅ Verified Winner</div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <span>👥</span>
+    <span>18,000+ Gift Cards Claimed</span>
+    <span class="stat-dot"></span>
+    <span>⭐</span>
+    <span>4.7★ average rating</span>
+  </div>
+</div>
+
+<div class="page-disclaimer">
+  This is a promotional experience and is not affiliated with or endorsed by Lululemon Athletica Inc. By proceeding, you agree to receive relevant communications about this reward. No purchase necessary to enter or win. Open to US residents 18+. Void where prohibited by law.
+</div>
+
+</body>
+</html>
