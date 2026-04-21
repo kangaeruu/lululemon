@@ -4,190 +4,351 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lululemon Gift Card Reward</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
+:root{
+  --red:#e31837;
+  --red-dark:#b01228;
+  --black:#0a0a0a;
+  --white:#ffffff;
+  --cream:#f9f7f4;
+  --gray:#888;
+  --light:#f2efeb;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',sans-serif;background:#0d0d0d;color:#fff;min-height:100vh;text-align:center}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--black);min-height:100vh;overflow-x:hidden}
 
-.hero{padding:40px 20px 20px;max-width:600px;margin:0 auto}
+/* ANNOUNCEMENT BAR */
+.announce{background:var(--black);color:var(--white);text-align:center;padding:10px 20px;font-size:11px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;position:relative;overflow:hidden}
+.announce-inner{display:inline-flex;gap:48px;animation:marquee 18s linear infinite}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.announce span{white-space:nowrap;opacity:0.9}
+.announce span b{color:var(--red);font-weight:600}
 
-.coin{width:80px;height:80px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;position:relative;flex-shrink:0}
-.coin-dollar{font-size:32px;font-weight:900;color:#111}
-.coin-star{position:absolute;top:4px;right:2px;font-size:16px}
+/* HERO */
+.hero{position:relative;padding:64px 24px 48px;text-align:center;overflow:hidden;background:var(--white)}
+.hero::before{content:'';position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(227,24,55,0.06) 0%,transparent 70%);pointer-events:none}
 
-.hero h1{font-size:clamp(28px,7vw,44px);font-weight:900;color:#ff4fa3;line-height:1.15;margin:20px 0 10px}
-.hero-sub{font-size:15px;color:rgba(255,255,255,0.6);margin-bottom:28px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:20px}
+.eyebrow::before,.eyebrow::after{content:'';width:28px;height:1px;background:var(--red);opacity:0.5}
 
-.gc-wrap{margin:0 auto 28px;max-width:320px}
-.gc{background:linear-gradient(135deg,#1a0d24 0%,#3d1a4f 100%);border-radius:16px;padding:24px 22px;text-align:left;position:relative;overflow:hidden;border:1px solid rgba(255,79,163,0.3);box-shadow:0 16px 60px rgba(255,79,163,0.15)}
-.gc::before{content:'';position:absolute;top:-40px;right:-40px;width:150px;height:150px;border-radius:50%;background:rgba(255,79,163,0.08)}
-.gc::after{content:'';position:absolute;bottom:-30px;left:10px;width:100px;height:100px;border-radius:50%;background:rgba(255,79,163,0.05)}
-.gc-brand{font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:4px}
-.gc-name{font-size:18px;font-weight:900;color:#fff;margin-bottom:20px}
-.gc-amount{font-size:52px;font-weight:900;color:#ff4fa3;line-height:1;position:relative;z-index:1}
-.gc-amount sup{font-size:20px;vertical-align:super;font-weight:700}
-.gc-sub{font-size:10px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-top:8px}
-.gc-chip{position:absolute;bottom:20px;right:20px;width:34px;height:26px;border-radius:4px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12)}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,10vw,80px);font-weight:700;line-height:1.0;color:var(--black);margin-bottom:6px;letter-spacing:-0.02em}
+.hero-title em{color:var(--red);font-style:italic}
+.hero-subtitle{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,4vw,26px);font-weight:400;font-style:italic;color:var(--gray);margin-bottom:40px;letter-spacing:0.01em}
 
-.cta-btn{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;max-width:520px;margin:0 auto 36px;padding:18px 24px;background:linear-gradient(90deg,#ff4fa3,#ff79c0);border:none;border-radius:50px;cursor:pointer;text-decoration:none;transition:opacity 0.2s,transform 0.1s}
-.cta-btn:hover{opacity:0.9}
-.cta-btn:active{transform:scale(0.98)}
-.cta-icon{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.22);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0}
+/* GIFT CARD */
+.gc-outer{perspective:1000px;max-width:340px;margin:0 auto 40px;cursor:default}
+.gc{background:var(--black);border-radius:20px;padding:30px 26px 26px;text-align:left;position:relative;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.18),0 0 0 1px rgba(255,255,255,0.06);transform:rotateY(-4deg) rotateX(3deg);transition:transform 0.4s ease,box-shadow 0.4s ease}
+.gc:hover{transform:rotateY(0deg) rotateX(0deg) scale(1.02);box-shadow:0 40px 100px rgba(0,0,0,0.22)}
+.gc-accent{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),#ff6b6b,var(--red))}
+.gc-dots{position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(227,24,55,0.07)}
+.gc-dots2{position:absolute;bottom:-40px;left:-20px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,0.03)}
+.gc-brand{font-size:9px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:3px}
+.gc-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--white);margin-bottom:24px;letter-spacing:0.02em}
+.gc-amount{font-family:'Cormorant Garamond',serif;font-size:68px;font-weight:700;color:var(--red);line-height:1;position:relative;z-index:1;letter-spacing:-0.02em}
+.gc-amount sup{font-size:28px;vertical-align:super}
+.gc-footer{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.gc-sub{font-size:9px;color:rgba(255,255,255,0.25);letter-spacing:0.15em;text-transform:uppercase}
+.gc-chip{width:38px;height:30px;border-radius:5px;background:linear-gradient(135deg,rgba(255,255,255,0.12),rgba(255,255,255,0.05));border:1px solid rgba(255,255,255,0.1)}
+
+/* CTA */
+.cta-section{padding:0 24px 16px;max-width:560px;margin:0 auto}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:14px;width:100%;padding:20px 28px;background:var(--red);border:none;border-radius:6px;cursor:pointer;text-decoration:none;transition:all 0.25s ease;position:relative;overflow:hidden}
+.cta-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.08),transparent);pointer-events:none}
+.cta-btn:hover{background:var(--red-dark);transform:translateY(-2px);box-shadow:0 12px 40px rgba(227,24,55,0.35)}
+.cta-btn:active{transform:translateY(0)}
+.cta-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--white);flex-shrink:0;font-family:'Cormorant Garamond',serif}
 .cta-text{text-align:left}
-.cta-text strong{display:block;font-size:16px;font-weight:800;color:#fff}
-.cta-text span{font-size:12px;color:rgba(255,255,255,0.8)}
+.cta-text strong{display:block;font-size:15px;font-weight:600;color:var(--white);letter-spacing:0.02em}
+.cta-text span{font-size:11px;color:rgba(255,255,255,0.7);font-weight:400}
+.cta-micro{font-size:11px;color:var(--gray);text-align:center;margin-top:10px;font-weight:400;letter-spacing:0.02em}
 
-.steps-wrap{padding:0 20px;max-width:600px;margin:0 auto 44px}
-.steps-card{background:#151c2e;border-radius:20px;padding:28px 24px;text-align:left}
-.step-row{display:flex;align-items:flex-start;gap:18px;margin-bottom:26px}
-.step-row:last-of-type{margin-bottom:0}
-.step-num{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#ff4fa3,#ff79c0);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;flex-shrink:0}
-.step-body strong{display:block;font-size:15px;font-weight:800;color:#fff;margin-bottom:3px}
-.step-body span{font-size:13px;color:rgba(255,255,255,0.48);line-height:1.5}
-.steps-note{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.07);font-size:12px;color:rgba(255,255,255,0.3);text-align:center;line-height:1.6}
+/* TRUST BADGES */
+.trust{display:flex;justify-content:center;gap:24px;padding:20px 24px 40px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:7px;font-size:12px;color:#999;font-weight:500}
+.trust-icon{width:18px;height:18px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;font-size:10px}
 
-.proof-section{padding:0 20px 44px;max-width:600px;margin:0 auto}
-.proof-section h2{font-size:clamp(22px,5vw,30px);font-weight:900;color:#ff4fa3;margin-bottom:8px;line-height:1.2}
-.proof-section .proof-sub{font-size:14px;color:rgba(255,255,255,0.5);margin-bottom:22px}
+/* SECTION DIVIDER */
+.section-divider{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:16px;padding:0 24px 40px}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--light)}
+.section-divider span{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:#ccc}
 
-.testimonials{display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
-.tcard{background:#151c2e;border-radius:14px;padding:18px 18px 16px;border:1px solid rgba(255,79,163,0.15);text-align:left}
-.tcard-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
-.avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;flex-shrink:0}
-.tcard-meta strong{display:block;font-size:14px;font-weight:800;color:#fff}
-.tcard-meta span{font-size:12px;color:rgba(255,255,255,0.4)}
-.stars{color:#ffb800;font-size:13px;margin-bottom:6px;letter-spacing:1px}
-.tcard p{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6}
-.tcard-badge{display:inline-block;margin-top:10px;background:rgba(255,79,163,0.15);color:#ff79c0;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;border:1px solid rgba(255,79,163,0.25)}
+/* STEPS */
+.steps-section{padding:0 24px 48px;max-width:560px;margin:0 auto}
+.section-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--red);margin-bottom:12px;text-align:center}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,6vw,40px);font-weight:700;color:var(--black);text-align:center;margin-bottom:32px;line-height:1.15}
 
-.stats-row{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;color:rgba(255,255,255,0.65);flex-wrap:wrap}
-.stat-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.3);display:inline-block;flex-shrink:0}
+.steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--light);position:relative}
+.step:last-of-type{border-bottom:none}
+.step-left{display:flex;flex-direction:column;align-items:center;gap:0;flex-shrink:0}
+.step-num{width:44px;height:44px;border-radius:50%;background:var(--black);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:700;color:var(--white);flex-shrink:0;transition:background 0.2s}
+.step:hover .step-num{background:var(--red)}
+.step-body{padding-top:10px}
+.step-body strong{display:block;font-size:14px;font-weight:600;color:var(--black);margin-bottom:4px;letter-spacing:0.01em}
+.step-body span{font-size:13px;color:var(--gray);line-height:1.6;font-weight:400}
+.steps-note{font-size:11px;color:#bbb;text-align:center;margin-top:24px;line-height:1.7;font-weight:400;font-style:italic}
 
-.page-disclaimer{padding:0 24px 48px;max-width:600px;margin:0 auto;font-size:12px;color:rgba(255,255,255,0.28);line-height:1.8}
-.page-disclaimer a{color:rgba(255,255,255,0.38)}
+/* PROOF */
+.proof-section{background:var(--cream);padding:48px 24px;text-align:center}
+.proof-inner{max-width:560px;margin:0 auto}
+
+.testimonials{display:flex;flex-direction:column;gap:16px;margin:28px 0}
+.tcard{background:var(--white);border-radius:12px;padding:22px;text-align:left;box-shadow:0 2px 20px rgba(0,0,0,0.06);transition:transform 0.2s,box-shadow 0.2s;opacity:0;transform:translateY(20px)}
+.tcard.visible{opacity:1;transform:translateY(0);transition:opacity 0.5s ease,transform 0.5s ease}
+.tcard:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.1)}
+.tcard-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--white);flex-shrink:0;font-family:'Cormorant Garamond',serif;letter-spacing:0.05em}
+.tcard-meta strong{display:block;font-size:13px;font-weight:600;color:var(--black)}
+.tcard-meta span{font-size:11px;color:#bbb;font-weight:400}
+.stars{color:var(--red);font-size:12px;margin-bottom:8px;letter-spacing:2px}
+.tcard p{font-size:13px;color:#555;line-height:1.7;font-weight:400;font-style:italic}
+.tcard-badge{display:inline-flex;align-items:center;gap:5px;margin-top:12px;background:#fff5f6;color:var(--red);font-size:10px;font-weight:600;padding:5px 12px;border-radius:20px;border:1px solid rgba(227,24,55,0.15);letter-spacing:0.05em;text-transform:uppercase}
+
+/* STATS */
+.stats{display:flex;justify-content:center;gap:40px;margin-top:8px;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:700;color:var(--black);line-height:1}
+.stat-label{font-size:11px;color:var(--gray);font-weight:500;margin-top:4px;letter-spacing:0.05em}
+
+/* BOTTOM CTA */
+.bottom-cta{padding:48px 24px;text-align:center;max-width:560px;margin:0 auto}
+.bottom-cta p{font-family:'Cormorant Garamond',serif;font-size:clamp(22px,5vw,32px);font-weight:600;font-style:italic;color:var(--black);margin-bottom:24px;line-height:1.3}
+
+/* DISCLAIMER */
+.disclaimer{background:var(--black);padding:24px;text-align:center;font-size:11px;color:rgba(255,255,255,0.25);line-height:1.8;font-weight:400}
+.disclaimer a{color:rgba(255,255,255,0.35)}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
 </style>
 </head>
 <body>
 
-<div class="hero">
-  <div class="coin">
-    <span class="coin-dollar">$</span>
-    <span class="coin-star">⭐</span>
+<!-- Marquee bar -->
+<div class="announce">
+  <div class="announce-inner">
+    <span>🎁 Limited Time &nbsp;·&nbsp; <b>$500 Lululemon Gift Card</b> &nbsp;·&nbsp; Free to Enter &nbsp;·&nbsp; 18,000+ Claimed &nbsp;·&nbsp; No Purchase Necessary &nbsp;·&nbsp;</span>
+    <span>🎁 Limited Time &nbsp;·&nbsp; <b>$500 Lululemon Gift Card</b> &nbsp;·&nbsp; Free to Enter &nbsp;·&nbsp; 18,000+ Claimed &nbsp;·&nbsp; No Purchase Necessary &nbsp;·&nbsp;</span>
   </div>
+</div>
 
-  <h1>Claim Your Lululemon<br>Gift Card Now!</h1>
-  <p class="hero-sub">Higher value deals = faster rewards!</p>
+<!-- Hero -->
+<div class="hero">
+  <div class="eyebrow reveal">Exclusive Reward</div>
+  <h1 class="hero-title reveal">Claim Your<br><em>$500 Gift Card</em></h1>
+  <p class="hero-subtitle reveal">from Lululemon Athletica</p>
 
-  <div class="gc-wrap">
-    <div class="gc">
+  <div class="gc-outer reveal">
+    <div class="gc" id="gc">
+      <div class="gc-accent"></div>
+      <div class="gc-dots"></div>
+      <div class="gc-dots2"></div>
       <div class="gc-brand">lululemon athletica</div>
       <div class="gc-name">Gift Card Reward</div>
       <div class="gc-amount"><sup>$</sup>500</div>
-      <div class="gc-sub">Sweepstakes Prize</div>
-      <div class="gc-chip"></div>
+      <div class="gc-footer">
+        <div class="gc-sub">Sweepstakes Prize</div>
+        <div class="gc-chip"></div>
+      </div>
     </div>
   </div>
+</div>
 
-
-
+<!-- CTA -->
+<div class="cta-section reveal">
   <a href="https://trksy.org/aff_c?offer_id=1587&aff_id=156956" class="cta-btn" target="_blank" rel="noopener">
     <div class="cta-icon">$</div>
     <div class="cta-text">
-      <strong>$500 Lululemon Gift Card</strong>
-      <span>(Enter Email &amp; Complete Deals)</span>
+      <strong>Claim My $500 Gift Card</strong>
+      <span>Enter email &amp; complete quick deals</span>
     </div>
   </a>
+  <p class="cta-micro">No purchase necessary &nbsp;·&nbsp; Free to enter &nbsp;·&nbsp; US residents 18+</p>
 </div>
 
-<div class="steps-wrap">
-  <div class="steps-card">
-    <div class="step-row">
-      <div class="step-num">1</div>
+<!-- Trust -->
+<div class="trust reveal">
+  <div class="trust-item"><div class="trust-icon">🔒</div> Secure Entry</div>
+  <div class="trust-item"><div class="trust-icon">✅</div> Verified Rewards</div>
+  <div class="trust-item"><div class="trust-icon">⚡</div> Fast Delivery</div>
+</div>
+
+<!-- Divider -->
+<div class="section-divider reveal"><span>How it works</span></div>
+
+<!-- Steps -->
+<div class="steps-section">
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-left"><div class="step-num">1</div></div>
       <div class="step-body">
-        <strong>Click The Button Above 👆</strong>
-        <span>Start your gift card claim process</span>
+        <strong>Click the button above 👆</strong>
+        <span>Start your gift card claim process — takes less than 2 minutes.</span>
       </div>
     </div>
-    <div class="step-row">
-      <div class="step-num">2</div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">2</div></div>
       <div class="step-body">
-        <strong>Enter Your Email &amp; Basic Info</strong>
-        <span>We need this to send your gift card</span>
+        <strong>Enter your email &amp; basic info</strong>
+        <span>We need this to send your gift card directly to you.</span>
       </div>
     </div>
-    <div class="step-row">
-      <div class="step-num">3</div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">3</div></div>
       <div class="step-body">
-        <strong>Complete Recommended Deals</strong>
-        <span>(Higher value deals = faster rewards!)</span>
+        <strong>Complete recommended deals</strong>
+        <span>Higher value deals = faster rewards. Complete at least 2.</span>
       </div>
     </div>
-    <div class="step-row">
-      <div class="step-num">4</div>
+    <div class="step">
+      <div class="step-left"><div class="step-num">4</div></div>
       <div class="step-body">
-        <strong>Claim Your Gift Card! 🎉</strong>
-        <span>Your reward is waiting for you!</span>
+        <strong>Claim your gift card 🎉</strong>
+        <span>Your $500 Lululemon reward is waiting for you.</span>
       </div>
     </div>
-    <div class="steps-note">* Terms and conditions apply. Gift card values may vary based on completed offers.</div>
   </div>
+  <p class="steps-note">* Terms and conditions apply. Gift card values may vary based on completed offers.</p>
 </div>
 
+<!-- Proof -->
 <div class="proof-section">
-  <h2>Shop Lululemon for Free 🛍️</h2>
-  <p class="proof-sub">Hot offer not to be missed — leggings, bras, jackets &amp; more.</p>
+  <div class="proof-inner">
+    <div class="section-eyebrow">Winner Stories</div>
+    <div class="section-title">Real People,<br>Real Rewards</div>
 
-  <div class="testimonials">
-    <div class="tcard">
-      <div class="tcard-top">
-        <div class="avatar" style="background:linear-gradient(135deg,#ff4fa3,#c026a0)">JM</div>
-        <div class="tcard-meta">
-          <strong>Jessica M.</strong>
-          <span>Austin, TX · 3 days ago</span>
+    <div class="testimonials">
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="avatar" style="background:var(--red)">JM</div>
+          <div class="tcard-meta">
+            <strong>Jessica M.</strong>
+            <span>Austin, TX · 3 days ago</span>
+          </div>
         </div>
+        <div class="stars">★★★★★</div>
+        <p>"ngl i thought this was gonna be one of those scam things lol but i got the gift card like 6 days later. got myself the align leggings i've been eyeing for months. still kinda shocked"</p>
+        <div class="tcard-badge">✅ Verified Winner</div>
       </div>
-      <div class="stars">★★★★★</div>
-      <p>"ngl i thought this was gonna be one of those scam things lol but i got the gift card like 6 days later. got myself the align leggings i've been eyeing for months. still kinda shocked"</p>
-      <div class="tcard-badge">✅ Verified Winner</div>
-    </div>
-    <div class="tcard">
-      <div class="tcard-top">
-        <div class="avatar" style="background:linear-gradient(135deg,#a855f7,#7c3aed)">RL</div>
-        <div class="tcard-meta">
-          <strong>Rachel L.</strong>
-          <span>Chicago, IL · 1 week ago</span>
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="avatar" style="background:var(--black)">RL</div>
+          <div class="tcard-meta">
+            <strong>Rachel L.</strong>
+            <span>Chicago, IL · 1 week ago</span>
+          </div>
         </div>
+        <div class="stars">★★★★★</div>
+        <p>"ok so i entered this on a whim and forgot about it. then i got an email saying i won and i genuinely thought it was spam 😭 used the $500 on a jacket and some joggers. so worth it"</p>
+        <div class="tcard-badge">✅ Verified Winner</div>
       </div>
-      <div class="stars">★★★★★</div>
-      <p>"ok so i entered this on a whim and forgot about it. then i got an email saying i won and i genuinely thought it was spam 😭 used the $500 on a jacket and some joggers. so worth it"</p>
-      <div class="tcard-badge">✅ Verified Winner</div>
-    </div>
-    <div class="tcard">
-      <div class="tcard-top">
-        <div class="avatar" style="background:linear-gradient(135deg,#f97316,#ea580c)">KT</div>
-        <div class="tcard-meta">
-          <strong>Kayla T.</strong>
-          <span>Miami, FL · 2 weeks ago</span>
+      <div class="tcard">
+        <div class="tcard-top">
+          <div class="avatar" style="background:var(--red)">KT</div>
+          <div class="tcard-meta">
+            <strong>Kayla T.</strong>
+            <span>Miami, FL · 2 weeks ago</span>
+          </div>
         </div>
+        <div class="stars">★★★★★</div>
+        <p>"my coworker sent me the link and i almost didn't bother. so glad i did omg. card showed up fast and i already went on a little spree 🛍️ tell your friends fr"</p>
+        <div class="tcard-badge">✅ Verified Winner</div>
       </div>
-      <div class="stars">★★★★★</div>
-      <p>"my coworker sent me the link and i almost didn't bother. so glad i did omg. card showed up fast and i already went on a little spree 🛍️ tell your friends fr"</p>
-      <div class="tcard-badge">✅ Verified Winner</div>
     </div>
-  </div>
 
-  <div class="stats-row">
-    <span>👥</span>
-    <span>18,000+ Gift Cards Claimed</span>
-    <span class="stat-dot"></span>
-    <span>⭐</span>
-    <span>4.7★ average rating</span>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num" id="counter1">0</div>
+        <div class="stat-label">Gift Cards Claimed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4.7★</div>
+        <div class="stat-label">Average Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$500</div>
+        <div class="stat-label">Prize Value</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="page-disclaimer">
-  This is a promotional experience and is not affiliated with or endorsed by Lululemon Athletica Inc. By proceeding, you agree to receive relevant communications about this reward. No purchase necessary to enter or win. Open to US residents 18+. Void where prohibited by law.
+<!-- Bottom CTA -->
+<div class="bottom-cta reveal">
+  <p>"Don't miss your chance to shop Lululemon on us."</p>
+  <a href="https://trksy.org/aff_c?offer_id=1587&aff_id=156956" class="cta-btn" target="_blank" rel="noopener">
+    <div class="cta-icon">$</div>
+    <div class="cta-text">
+      <strong>Claim My $500 Gift Card</strong>
+      <span>Enter email &amp; complete quick deals</span>
+    </div>
+  </a>
+  <p class="cta-micro" style="margin-top:12px">No purchase necessary &nbsp;·&nbsp; Free to enter &nbsp;·&nbsp; US residents 18+</p>
 </div>
 
+<!-- Disclaimer -->
+<div class="disclaimer">
+  This is a promotional experience and is not affiliated with or endorsed by Lululemon Athletica Inc. By proceeding, you agree to receive relevant communications about this reward. No purchase necessary to enter or win. Open to US residents 18+. Void where prohibited by law. &nbsp;|&nbsp; <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a>
+</div>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Testimonial reveal
+const tcards = document.querySelectorAll('.tcard');
+const tcardObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 150);
+      tcardObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+tcards.forEach(el => tcardObserver.observe(el));
+
+// Counter animation
+function animateCounter(el, target, duration) {
+  let start = 0;
+  const step = target / (duration / 16);
+  const timer = setInterval(() => {
+    start += step;
+    if (start >= target) { el.textContent = target.toLocaleString() + '+'; clearInterval(timer); return; }
+    el.textContent = Math.floor(start).toLocaleString() + '+';
+  }, 16);
+}
+const counterEl = document.getElementById('counter1');
+const counterObserver = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) {
+    animateCounter(counterEl, 18000, 1800);
+    counterObserver.unobserve(counterEl);
+  }
+}, { threshold: 0.5 });
+counterObserver.observe(counterEl);
+
+// Gift card tilt on mouse move
+const gc = document.getElementById('gc');
+document.querySelector('.gc-outer').addEventListener('mousemove', (e) => {
+  const rect = gc.getBoundingClientRect();
+  const x = (e.clientX - rect.left) / rect.width - 0.5;
+  const y = (e.clientY - rect.top) / rect.height - 0.5;
+  gc.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg) scale(1.02)`;
+});
+document.querySelector('.gc-outer').addEventListener('mouseleave', () => {
+  gc.style.transform = 'rotateY(-4deg) rotateX(3deg)';
+});
+</script>
 </body>
 </html>
